@@ -1,341 +1,454 @@
-/*متغییر ها*/
-:root{
-  --main:#0b3d62;
-  --sub:#109ac8;
-  --bg:#ffffff;
-  --add:#8ecfda9a;
-  --text:#222;
-  --border:#f1e1bd;
+/* ==========================================================
+   متغیرهای رنگی
+   ========================================================== */
+:root {
+  --main: #0b3d62;        /* رنگ اصلی (سرمه‌ای) */
+  --sub: #109ac8;         /* رنگ فرعی (آبی روشن) - دکمه‌ها */
+  --bg: #ffffff;          /* پس‌زمینه‌ی صفحه */
+  --add: #8ecfda9a;       /* پس‌زمینه‌ی بخش خدمات */
+  --text: #222;           /* رنگ متن */
+  --border: #f1e1bd;      /* رنگ کادرها و هدر */
+  --muted: #f4f6f8;       /* خاکستری روشن (مشتریان، تصویر خبر) */
 }
-/*این بخش روی تمام عنصر ها تاثیر داره*/
-*{box-sizing:border-box;
-  margin:0;
-  padding:0;
+
+/* ==========================================================
+   تنظیمات پایه
+   ========================================================== */
+
+/* حذف فاصله‌های پیش‌فرض و محاسبه‌ی اندازه با احتساب padding و border */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-/*بدنه ی متن*/
-body{
-  font-family:Tahoma, Arial, sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  line-height:1.7;
+
+/* بدنه‌ی صفحه */
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
   font-size: 14pt;
 }
-/*تگ های لینک*/
-a{color:inherit;
-  text-decoration:none;
+
+/* لینک‌ها: رنگ از والد، بدون خط زیرین */
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.container{max-width:1140px;
+/* کانتینر مرکزی با حداکثر عرض ثابت */
+.container {
+  max-width: 1140px;
   margin: auto;
-  padding:0 20px;
+  padding: 0 20px;
 }
 
-
-.topbar{
-  background:var(--primary);
-  color:#fff;
-  font-size:13px;
-  padding:6px 0;
-}
-.topbar .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
-
-/* Header */
-header{
-  border-bottom:1px solid var(--border);
-  background:#fff;
-  position:sticky;top:0;z-index:50;
-}
-.header-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0;flex-wrap:wrap;gap:12px;
+/* ==========================================================
+   هدر و منو
+   ========================================================== */
+header {
+  background-color: var(--border);
+  position: sticky;   /* هدر هنگام اسکرول بالای صفحه می‌ماند */
+  top: 0;
+  z-index: 100;
 }
 
+header .container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
 
-/* Hero */
-.hero{
-  background:linear-gradient(135deg,var(--main),#155a8a);
-  color:#fff;
-  padding:70px 0;
-  text-align:center;
-  background-image: url("a.jpg");
-  background-size:auto;
-  background-position:center;
+/* لوگو + نام آزمایشگاه */
+.sub-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sub-container img {
+  width: 80px;
+  height: auto;
+}
+
+.sub-container p {
+  font-weight: 600;
+  font-size: 16pt;
+}
+
+/* افکت حرکت ماوس روی لوگو */
+.logo {
+  transition: 0.3s;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 2px 5px rgb(145, 183, 240));
+  transform: scale(1.1);
+}
+
+/* منوی ناوبری */
+nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 25px;
+  color: var(--main);
+}
+
+/* ==========================================================
+   بخش اصلی (Hero)
+   ========================================================== */
+.hero {
   min-height: 500px;
-}
-.hero h1{font-size:30px;margin-bottom:14px;}
-.hero p{max-width:680px;margin:0 auto;font-size:16px;opacity:.95;}
-
-/* Services */
-.services{padding:60px 0;background:var(--add);}
-.section-title{text-align:center;font-size:24px;margin-bottom:36px;color:var(--primary);}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-.card{
-  background:#fff;border:2px solid var(--border);border-radius:10px;
-  padding:24px;text-align:center;transition:0.3s;
-}
-.card:hover{box-shadow:0px 20px 40px rgb(167, 167, 169);transform:translateY(-10px) scale(1.1);}
-.card .icon{
-  width:54px;height:54px;border-radius:50%;
-  background:var(--primary);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 14px;font-weight:bold;font-size:18px;
-}
-.card h3{font-size:17px;margin-bottom:10px;color:var(--primary);}
-.card p{font-size:14px;color:#555;}
-
-/* Courses banner */
-.banner{
-  padding:50px 0;text-align:center;background:#fff;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-}
-.banner h2{color:var(--primary);margin-bottom:14px;font-size:22px;}
-.banner p{max-width:640px;margin:0 auto 20px;color:#555;}
-.btn{
-  display:inline-block;background:var(--accent);color:#fff;
-  padding:10px 26px;border-radius:5px;font-weight:bold;font-size:14px;
+  padding: 70px 0;
+  text-align: center;
+  color: #fff;
+  /* لایه‌ی گرادیان روی تصویر؛ اگر a.jpg نباشد فقط گرادیان دیده می‌شود */
+  background:
+    linear-gradient(135deg, rgba(11, 61, 98, 0.85), rgba(21, 90, 138, 0.85)),
+    url("a.jpg") center / cover no-repeat;
 }
 
-/* Clients */
+.hero h1 {
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+/* ==========================================================
+   عنوان مشترک بخش‌ها
+   ========================================================== */
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 36px;
+  color: var(--main);
+}
+
+/* ==========================================================
+   خدمات
+   ========================================================== */
+.services {
+  padding: 60px 0;
+  background: var(--add);
+}
+
+/* شبکه‌ی کارت‌ها: تعداد ستون‌ها خودکار با عرض صفحه تنظیم می‌شود */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: block;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+/* افکت بالا آمدن و بزرگ شدن کارت */
+.card:hover {
+  box-shadow: 0 20px 40px rgb(167, 167, 169);
+  transform: translateY(-10px) scale(1.1);
+}
+
+/* دایره‌ی آیکون بالای کارت */
+.card .icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--main);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: var(--main);
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ==========================================================
+   بنر دوره‌ها و وبینارها
+   ========================================================== */
+.banner {
+  padding: 50px 0;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.banner h2 {
+  color: var(--main);
+  margin-bottom: 14px;
+  font-size: 22px;
+}
+
+.banner p {
+  max-width: 640px;
+  margin: 0 auto 20px;
+  color: #555;
+}
+
+/* دکمه */
+.btn {
+  display: inline-block;
+  background: var(--sub);
+  color: #fff;
+  padding: 10px 26px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ==========================================================
+   مشتریان (لوگوهای متحرک)
+   ========================================================== */
 .clients {
-    padding: 50px 0;
-    background: var(--muted);
+  padding: 50px 0;
+  background: var(--muted);
 }
 
+/* کادر نمایش؛ جهت LTR تا حرکت در صفحه‌ی راست‌به‌چپ هم درست باشد */
 .client-marquee {
-    overflow: hidden;
-    padding: 20px 0;
-    direction: ltr;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  overflow: hidden;
+  padding: 20px 0;
+  direction: ltr;
+  /* محو شدن لبه‌های چپ و راست */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 
+/* ریل لوگوها (نصف آن کپی است تا حرکت بی‌وقفه باشد) */
 .client-track {
-    display: flex;
-    gap: 40px;
-    width: max-content;
-    animation: clients-scroll 30s linear infinite;
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: clients-scroll 30s linear infinite;
 }
 
-/* با رفتن روی لوگوها، حرکت کمی متوقف می‌شود */
+/* با رفتن ماوس روی لوگوها، حرکت متوقف می‌شود */
 .client-marquee:hover .client-track {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .client-logo {
-    flex: 0 0 150px;
-    width: 150px;
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0.45;
-    transform: scale(1);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    cursor: pointer;
+  flex: 0 0 150px;
+  width: 150px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.45;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  cursor: pointer;
 }
 
 .client-logo img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .client-logo:hover {
-    opacity: 1;
-    transform: scale(1.12);
+  opacity: 1;
+  transform: scale(1.12);
 }
 
+/* حرکت ریل: نصف عرض + نصف فاصله‌ی بین لوگوها */
 @keyframes clients-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(calc(-50% - 20px)); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 20px)); }
 }
 
+/* کاربرانی که حرکت را در سیستم‌شان کم کرده‌اند، انیمیشن نمی‌بینند */
 @media (prefers-reduced-motion: reduce) {
-    .client-track { animation: none; }
+  .client-track { animation: none; }
 }
 
-/* News */
+/* ==========================================================
+   اخبار (اسلایدر)
+   ========================================================== */
 .news {
-    padding: 40px 0;
+  padding: 40px 0;
 }
 
-/* محل نمایش خبرها */
+/* قاب اسلایدر؛ هر خبر روی هم قرار می‌گیرد و با transform جابه‌جا می‌شود */
 .news-slider {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    height: 300px;
-    margin: 0 auto;
-
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-/* خود خبر */
+/* هر خبر: در حالت عادی بیرون از قاب و نامرئی است */
 .news-item {
-    position: absolute;
-    inset: 0;
-
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-
-    background: white;
-
-    /* خبرهای بعدی خارج از صفحه هستند */
-    transform: translateX(110%);
-
-    /* سرعت حرکت */
-    transition:
-        transform 1s cubic-bezier(0.65, 0, 0.35, 1),
-        opacity 1s ease;
-
-    opacity: 0;
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transform: translateX(110%);
+  opacity: 0;
+  /* مدت زمان باید با SLIDE_DURATION در جاوااسکریپت برابر باشد */
+  transition:
+    transform 1s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 1s ease;
 }
 
 /* خبر فعلی */
 .news-item.active {
-    transform: translateX(0);
-    opacity: 1;
+  transform: translateX(0);
+  opacity: 1;
 }
 
-/* خبر قبلی که از صفحه خارج می‌شود */
+/* خبر قبلی که در حال خروج است */
 .news-item.prev {
-    transform: translateX(-110%);
-    opacity: 0;
+  transform: translateX(-110%);
+  opacity: 0;
 }
 
 .news-thumb {
-    height: 150px;
-
-    background: var(--muted);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #aaa;
-    font-size: 14px;
+  height: 150px;
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 14px;
 }
 
 .news-body {
-    padding: 16px;
+  padding: 16px;
 }
 
 .news-body h4 {
-    font-size: 15px;
-    margin-bottom: 8px;
-    color: var(--primary);
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--main);
 }
 
 .news-body p {
-    font-size: 13px;
-    color: #666;
+  font-size: 13px;
+  color: #666;
 }
 
-
-/* دایره‌ها */
+/* دایره‌های زیر اسلایدر */
 .news-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .dot {
-    width: 15px;
-    height: 15px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    background: #ccc;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .dot.active {
-    background: var(--primary);
+  background: var(--main);
 }
 
-/* Locations */
-.locations{padding:50px 0;background:var(--muted);text-align:center;}
-.loc-row{
-  display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:24px;
-}
-.loc-box{
-  background:#fff;border:1px solid var(--border);border-radius:8px;
-  padding:20px;min-width:220px;
-}
-.loc-box h4{color:var(--primary);margin-bottom:8px;font-size:16px;}
-.loc-box p{font-size:13px;color:#666;}
-
-/* Contact */
-.contact{padding:50px 0;text-align:center;}
-.contact p{color:#555;max-width:600px;margin:12px auto;}
-
-/* Footer */
-footer{background:var(--primary);color:#dce6f0;padding:40px 0 20px;font-size:14px;}
-.footer-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:20px;margin-bottom:24px;
-}
-.footer-grid h5{color:#fff;margin-bottom:12px;font-size:15px;}
-.footer-grid ul{list-style:none;}
-.footer-grid li{margin-bottom:6px;}
-.footer-grid a:hover{color:#fff;}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.15);
-  padding-top:16px;text-align:center;font-size:12px;color:#aebfd2;
+/* ==========================================================
+   فوتر
+   ========================================================== */
+footer {
+  background: var(--main);
+  color: #dce6f0;
+  padding: 40px 0 20px;
+  font-size: 14px;
 }
 
-@media (max-width:700px){
-  nav ul{gap:12px;font-size:13px;}
-  .header-inner{flex-direction:column;align-items:flex-start;}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.brand img {
-    width: 60px;
-    height: auto;
-}
-
-.brand p {
-    margin: 0;
-}
-
-.h-list ul{
-  display: flex;
-  gap: 25px;
-  list-style-type: none;
-  color: var(--primary);
-}
-
-.name-footer h5{
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.name-footer-2 h5{
+/* عنوان ستون‌ها */
+.footer-title {
+  color: #fff;
+  margin-bottom: 12px;
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
+/* عنوان بزرگ‌تر برای نام آزمایشگاه */
+.footer-title-lg {
+  font-size: 26px;
+}
 
-.logo:hover {
-    filter: drop-shadow(0px 2px 5px rgb(145, 183, 240));
-    transform:scale(1.1);
+.footer-grid ul {
+  list-style: none;
+}
 
+.footer-grid li {
+  margin-bottom: 6px;
+}
+
+.footer-grid a:hover {
+  color: #fff;
+}
+
+/* نوار پایین فوتر (حقوق محفوظ) */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #aebfd2;
+}
+
+/* ==========================================================
+   واکنش‌گرا (موبایل)
+   ========================================================== */
+@media (max-width: 700px) {
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+  }
 }
