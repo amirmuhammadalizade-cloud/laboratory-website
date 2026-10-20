@@ -2,13 +2,15 @@
    متغیرهای رنگی
    ========================================================== */
 :root {
-  --main: #0b3d62;        /* رنگ اصلی (سرمه‌ای) */
-  --sub: #109ac8;         /* رنگ فرعی (آبی روشن) - دکمه‌ها */
-  --bg: #ffffff;          /* پس‌زمینه‌ی صفحه */
-  --add: #8ecfda9a;       /* پس‌زمینه‌ی بخش خدمات */
-  --text: #222;           /* رنگ متن */
-  --border: #f1e1bd;      /* رنگ کادرها و هدر */
-  --muted: #f4f6f8;       /* خاکستری روشن (مشتریان، تصویر خبر) */
+  --main: #123B5D;     
+  --sub: #159A9C;       
+  --accent: #4FA9D1;    
+  --bg: #F8FAFC;      
+  --add: #EEF4F7;   
+  --text: #1F2933;   
+  --muted: #64748B;    
+  --border: #D7E2E8;     
+  --white: #FFFFFF;
 }
 
 /* ==========================================================
@@ -97,6 +99,39 @@ nav ul {
   gap: 25px;
   color: var(--main);
 }
+
+.auth-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ظاهر لینک‌ها */
+.auth-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 14px;
+    background: var(--main);
+    color: var(--white);
+
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* وقتی نشانگر روی لینک قرار می‌گیرد */
+.auth-link:hover {
+    opacity: 0.85;
+}
+
+/* اطمینان از مخفی ماندن عناصر دارای hidden */
+[hidden] {
+    display: none !important;
+}
+
+
 
 /* ==========================================================
    بخش اصلی (Hero)

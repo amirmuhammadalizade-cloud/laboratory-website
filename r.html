@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    
+<p>شماره تلفن خود را وارد کنید.</p>
+
+    <form id="phone-form">
+
+        <label for="phone">شماره تلفن</label>
+
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="09123456789"
+            autocomplete="tel"
+            required
+        >
+
+        <button type="button" id="send-code">
+            ارسال کد تأیید
+        </button>
+
+    </form>
+
+    <div id="verification-section" hidden>
+
+        <label for="verification-code">
+            کد تأیید پیامک‌شده
+        </label>
+
+        <input
+            type="text"
+            id="verification-code"
+            inputmode="numeric"
+            maxlength="6"
+            autocomplete="one-time-code"
+            placeholder="کد ۶ رقمی"
+        >
+
+        <button type="button" id="verify-code">
+            تأیید و ورود
+        </button>
+
+    </div>
+
+    </body>
+</html>
