@@ -472,6 +472,120 @@ footer {
   color: #aebfd2;
 }
 
+/* ثبت نام */
+.form-id {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 36px 30px;
+
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 24px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+.register{
+  min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #123B5D,
+        #123b5d9a,
+        #123b5d29
+    );
+
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.form-header p {
+    font-size: 16pt;
+    line-height: 2;
+    color: var(--text);
+}
+
+
+input {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(10, 15, 35, 0.55);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+input::placeholder {
+    color: #9299b7;
+}
+
+input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px #8b5cf630;
+}
+
+/* دکمه ها */
+button {
+    width: 100%;
+    min-height: 50px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: white;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #8b5cf650;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.footer-text {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 12pt;
+    color: var(--text);
+}
+
 /* ==========================================================
    واکنش‌گرا (موبایل)
    ========================================================== */

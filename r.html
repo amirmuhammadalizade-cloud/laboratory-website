@@ -1,49 +1,67 @@
 <!DOCTYPE html>
-<html>
-    <body>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-<p>شماره تلفن خود را وارد کنید.</p>
+    <title>ورود به حساب کاربری</title>
 
-    <form id="phone-form">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        <label for="phone">شماره تلفن</label>
+<body class="register">
+    <main class="form-id">
 
-        <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="09123456789"
-            autocomplete="tel"
-            required
-        >
+        <div class="form-header">
+            <p>برای ورود، شماره تلفن خود را وارد کنید.</p>
+        </div>
 
-        <button type="button" id="send-code">
-            ارسال کد تأیید
-        </button>
+        <form id="phone-form">
 
-    </form>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="09123456789"
+                autocomplete="tel"
+                inputmode="numeric"
+                pattern="09[0-9]{9}"
+                maxlength="11"
+                required
+            >
 
-    <div id="verification-section" hidden>
+            <button type="submit" id="send-code">
+                ارسال کد تأیید
+            </button>
 
-        <label for="verification-code">
-            کد تأیید پیامک‌شده
-        </label>
+        </form>
 
-        <input
-            type="text"
-            id="verification-code"
-            inputmode="numeric"
-            maxlength="6"
-            autocomplete="one-time-code"
-            placeholder="کد ۶ رقمی"
-        >
+        <div id="verification-section" hidden>
 
-        <button type="button" id="verify-code">
-            تأیید و ورود
-        </button>
+            <label for="verification-code">
+                کد تأیید پیامک‌شده
+            </label>
 
-    </div>
+            <input
+                type="text"
+                id="verification-code"
+                inputmode="numeric"
+                maxlength="6"
+                autocomplete="one-time-code"
+                placeholder="کد ۶ رقمی"
+            >
 
-    </body>
+            <button type="button" id="verify-code">
+                تأیید و ورود
+            </button>
+
+        </div>
+
+        <p class="footer-text">
+            ورود سریع، ساده و امن
+        </p>
+
+    </main>
+
+</body>
 </html>
