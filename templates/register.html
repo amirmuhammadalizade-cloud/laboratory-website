@@ -1,22 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ورود به حساب کاربری</title>
+    <title>ثبت‌نام و ورود</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body class="register">
-    <main class="form-id">
 
-        <div class="form-header">
-            <p>برای ورود، شماره تلفن خود را وارد کنید.</p>
-        </div>
+<main class="form-id">
 
-        <form id="phone-form" action="/login" method="POST">
+    <div class="form-header">
+        <p>به سایت ما خوش آمدید</p>
+    </div>
+
+    <!-- پیام‌های سرور -->
+    <p id="message" role="status" aria-live="polite" hidden></p>
+
+
+    <!-- مرحله اول: شماره تلفن -->
+    <section class="step" id="phone-step">
+
+        <h3>شماره تلفن</h3>
+        <p>شماره موبایل خود را وارد کنید.</p>
+
+        <form id="phone-form"
+              action="{{ url_for('register') }}"
+              method="POST">
 
             <input
                 type="tel"
@@ -30,77 +46,293 @@
                 required
             >
 
-
-            <div id="name-section" hidden>
-                <label for="name">نام شما</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="نام خود را وارد کنید"
-                    autocomplete="given-name"
-                >
-            </div>
-
-            <button type="submit" class="send-code" id="continue-button">
+            <button type="submit" class="send-code">
                 ادامه
             </button>
 
+        </form>
+    </section>
 
+
+    <!-- مرحله دوم: ورود کاربر قبلی -->
+    <section class="step" id="login-step" hidden>
+
+        <h3>ورود به حساب</h3>
+        <p>رمز عبور خود را وارد کنید.</p>
+
+        <form id="login-form"
+              action="{{ url_for('login') }}"
+              method="POST">
+
+            <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="رمز عبور"
+                autocomplete="current-password"
+                maxlength="8"
+                required
+            >
+
+            <button type="submit" class="send-code">
+                ورود
+            </button>
         </form>
 
-        <div id="verification-section" hidden>
+        <button type="button" id="forgot-password">
+            فراموشی رمز عبور
+        </button>
+    </section>
 
-            <label for="verification-code">
-                کد تأیید پیامک‌شده
-            </label>
+
+    <!-- مرحله سوم: تأیید شماره -->
+    <section class="step" id="verify-step" hidden>
+
+        <h3>تأیید شماره تلفن</h3>
+        <p>کد ۶ رقمی نمایش‌داده‌شده در ترمینال را وارد کنید.</p>
+
+        <form id="verify-form"
+              action="{{ url_for('verify') }}"
+              method="POST">
 
             <input
                 type="text"
                 id="verification-code"
+                name="code"
                 inputmode="numeric"
-                maxlength="4"
+                pattern="[0-9]{6}"
+                maxlength="6"
                 autocomplete="one-time-code"
-                placeholder="کد 4 رقمی"
+                placeholder="کد ۶ رقمی"
+                required
             >
 
-            <button type="button" id="verify-code">
-                تأیید و ورود
+            <button type="submit" class="send-code">
+                تأیید کد
             </button>
+        </form>
+    </section>
 
-        </div>
 
-        <p class="footer-text">
-            ورود سریع، ساده و امن
-        </p>
+    <!-- مرحله چهارم: تکمیل ثبت‌نام -->
+    <section class="step" id="complete-step" hidden>
 
-    </main>
-    
+        <h3>تکمیل ثبت‌نام</h3>
+        <p>نام و رمز عبور خود را تعیین کنید.</p>
+
+        <form id="complete-form"
+              action="{{ url_for('complete_registration') }}"
+              method="POST">
+
+            <label for="name">نام شما</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="نام خود را وارد کنید"
+                autocomplete="name"
+                maxlength="100"
+                required
+            >
+
+            <label for="password">رمز عبور</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="۴ تا ۸ کاراکتر"
+                minlength="4"
+                maxlength="8"
+                autocomplete="new-password"
+                required
+            >
+
+            <label for="confirm-password">تکرار رمز عبور</label>
+
+            <input
+                type="password"
+                id="confirm-password"
+                name="confirm_password"
+                placeholder="رمز عبور را دوباره وارد کنید"
+                minlength="4"
+                maxlength="8"
+                autocomplete="new-password"
+                required
+            >
+
+            <button type="submit" class="send-code">
+                تکمیل ثبت‌نام
+            </button>
+        </form>
+    </section>
+
+    <!-- پیام تکمیل ثبت‌نام -->
+    <section class="step" id="success-step" hidden>
+        <h3>ثبت‌نام کامل شد!</h3>
+        <p>حساب کاربری شما با موفقیت ایجاد شد.</p>
+
+        <button type="button" class="send-code" id="confirm-registration">
+            تأیید
+        </button>
+    </section>
+
+    <p class="footer-text">
+        ورود سریع، ساده و امن
+    </p>
+
+</main>
+
+
 <script>
-    const phoneForm = document.getElementById("phone-form");
-    const phoneInput = document.getElementById("phone");
-    const nameSection = document.getElementById("name-section");
-    const nameInput = document.getElementById("name");
-    const continueButton = document.getElementById("continue-button");
+    const steps = document.querySelectorAll(".step");
+    const message = document.getElementById("message");
 
-    let nameStepShown = false;
+    function showStep(stepId) {
+        steps.forEach(step => {
+            step.hidden = step.id !== stepId;
+        });
 
-    phoneForm.addEventListener("submit", function (event) {
-        if (!nameStepShown) {
+        message.hidden = true;
+        message.textContent = "";
+    }
+
+    function showMessage(text) {
+        message.textContent = text;
+        message.hidden = false;
+    }
+
+    async function submitForm(form) {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form)
+        });
+
+        const data = await response.json();
+
+        return { response, data };
+    }
+
+
+    // مرحله اول: ارسال شماره و تشخیص کاربر
+    document.getElementById("phone-form")
+        .addEventListener("submit", async function (event) {
             event.preventDefault();
 
-            nameSection.hidden = false;
-            nameInput.required = true;
-            nameInput.focus();
+            try {
+                const { response, data } = await submitForm(this);
 
-            continueButton.textContent = "ثبت‌نام";
-            nameStepShown = true;
-        }
+                if (!response.ok) {
+                    if (data.next === "login") {
+                        showStep("login-step");
+                    }
+
+                    showMessage(data.message);
+                    return;
+                }
+
+                if (data.next === "login") {
+                    showStep("login-step");
+                } else if (data.next === "verify") {
+                    showStep("verify-step");
+                }
+
+                showMessage(data.message);
+
+            } catch (error) {
+                showMessage("ارتباط با سرور برقرار نشد.");
+            }
+        });
+
+
+    // مرحله دوم: ورود کاربر قبلی
+    document.getElementById("login-form")
+        .addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            try {
+                const { response, data } = await submitForm(this);
+
+                showMessage(data.message);
+
+                if (response.ok) {
+                    this.reset();
+                }
+
+            } catch (error) {
+                showMessage("ارتباط با سرور برقرار نشد.");
+            }
+        });
+
+
+    // مرحله سوم: تأیید کد
+    document.getElementById("verify-form")
+        .addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            try {
+                const { response, data } = await submitForm(this);
+
+                if (!response.ok) {
+                    showMessage(data.message);
+                    return;
+                }
+
+                showStep("complete-step");
+                showMessage(data.message);
+
+            } catch (error) {
+                showMessage("ارتباط با سرور برقرار نشد.");
+            }
+        });
+
+
+    // مرحله چهارم: تکمیل ثبت‌نام
+    document.getElementById("complete-form")
+        .addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                showMessage("رمز عبور و تکرار آن یکسان نیستند.");
+                return;
+            }
+
+            try {
+                const { response, data } = await submitForm(this);
+
+                if (response.ok) {
+                    this.reset();
+                    showStep("success-step");
+                } else {
+                    showMessage(data.message);
+                }
+
+            } catch (error) {
+                showMessage("ارتباط با سرور برقرار نشد.");
+            }
+        });
+
+
+    // فراموشی رمز: فعلاً فقط پیام آزمایشی
+    document.getElementById("forgot-password")
+        .addEventListener("click", function () {
+            showMessage(
+                "بازیابی رمز عبور هنوز پیاده‌سازی نشده است."
+            );
+        });
+
+    document.getElementById("confirm-registration")
+    .addEventListener("click", function () {
+        window.location.href = "/";
     });
 </script>
-</body>
-</html>
-
 
 </body>
 </html>
