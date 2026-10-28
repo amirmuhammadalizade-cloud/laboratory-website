@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>آزمایشگاه مهندسی راه آهن</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
             <div class="auth-box">
 
             <!-- حالت اول: کاربر وارد نشده است -->
-            <a href="r.html" id="register-link" class="auth-link">
+            <a href="/register" id="register-link" class="auth-link" target="_blank">
                 ورود / ثبت‌نام
             </a>
 
@@ -83,7 +83,6 @@
             <p>بازدید از آزمایشگاه</p>
           </a>
 
-          <!-- دو کارت زیر نمونه‌ی موقت (کپی کارت بالا) هستند؛ بعداً جایگزین کنید -->
           <a href="#" class="card">
             <div class="icon">4</div>
             <h3>بازدید</h3>

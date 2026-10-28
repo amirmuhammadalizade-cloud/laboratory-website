@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ورود به حساب کاربری</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="register">
+    <main class="form-id">
+
+        <div class="form-header">
+            <p>برای ورود، شماره تلفن خود را وارد کنید.</p>
+        </div>
+
+        <form id="phone-form" action="/login" method="POST">
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="09123456789"
+                autocomplete="tel"
+                inputmode="numeric"
+                pattern="09[0-9]{9}"
+                maxlength="11"
+                required
+            >
+
+
+            <div id="name-section" hidden>
+                <label for="name">نام شما</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="نام خود را وارد کنید"
+                    autocomplete="given-name"
+                >
+            </div>
+
+            <button type="submit" class="send-code" id="continue-button">
+                ادامه
+            </button>
+
+
+        </form>
+
+        <div id="verification-section" hidden>
+
+            <label for="verification-code">
+                کد تأیید پیامک‌شده
+            </label>
+
+            <input
+                type="text"
+                id="verification-code"
+                inputmode="numeric"
+                maxlength="4"
+                autocomplete="one-time-code"
+                placeholder="کد 4 رقمی"
+            >
+
+            <button type="button" id="verify-code">
+                تأیید و ورود
+            </button>
+
+        </div>
+
+        <p class="footer-text">
+            ورود سریع، ساده و امن
+        </p>
+
+    </main>
+    
+<script>
+    const phoneForm = document.getElementById("phone-form");
+    const phoneInput = document.getElementById("phone");
+    const nameSection = document.getElementById("name-section");
+    const nameInput = document.getElementById("name");
+    const continueButton = document.getElementById("continue-button");
+
+    let nameStepShown = false;
+
+    phoneForm.addEventListener("submit", function (event) {
+        if (!nameStepShown) {
+            event.preventDefault();
+
+            nameSection.hidden = false;
+            nameInput.required = true;
+            nameInput.focus();
+
+            continueButton.textContent = "ثبت‌نام";
+            nameStepShown = true;
+        }
+    });
+</script>
+</body>
+</html>
+
+
+</body>
+</html>

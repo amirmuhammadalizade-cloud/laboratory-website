@@ -2,7 +2,7 @@
    متغیرهای رنگی
    ========================================================== */
 :root {
-  --main: #123B5D;     
+  --main: rgb(18, 60, 94);     
   --sub: #159A9C;       
   --accent: #4FA9D1;    
   --bg: #F8FAFC;      
@@ -406,8 +406,8 @@ nav ul {
 }
 
 .dot {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   padding: 0;
   border: none;
   border-radius: 50%;
@@ -501,10 +501,9 @@ footer {
     font-family: Tahoma, Arial, sans-serif;
 
     background: linear-gradient(
-        135deg,
-        #123B5D,
-        #123b5d9a,
-        #123b5d29
+      rgb(18, 60, 94),
+      rgba(18, 60, 94, 0.627),
+      rgba(18, 60, 94, 0.16)
     );
 
     color: #ffffff;
@@ -546,19 +545,19 @@ input::placeholder {
 }
 
 input:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 3px #8b5cf630;
+    border-color: rgba(18, 60, 94, 0.50);
+    box-shadow: 0 0 0 3px rgba(18, 60, 94, 0.30);
 }
 
 /* دکمه ها */
-button {
+.send-code {
     width: 100%;
     min-height: 50px;
 
     border: none;
     border-radius: 12px;
 
-    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    background: var(--main);
     color: white;
 
     font-family: inherit;
@@ -570,12 +569,12 @@ button {
     transition: transform 0.25s, box-shadow 0.25s;
 }
 
-button:hover {
+.send-code:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px #8b5cf650;
 }
 
-button:active {
+.send-code:active {
     transform: scale(0.98);
 }
 
